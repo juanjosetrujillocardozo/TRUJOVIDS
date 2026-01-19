@@ -1,0 +1,43 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+<BaseLayout title="Inicio" description="Gaming, Minecraft y comunidad. Parte de TRUJO TECHNOLOGIES.">
+    <header style="padding: 32px 0; display: flex; justify-content: space-between; align-items: center;" class="container">
+        <strong style="font-size: 1.2rem; letter-spacing: -0.5px;">TRUJO VIDS</strong>
+        <nav>
+            <a href="/about" style="margin-left: 20px; color: var(--text-muted); text-decoration: none; font-weight: 600;">Sobre</a>
+            <a href="/links" style="margin-left: 20px; color: var(--text-muted); text-decoration: none; font-weight: 600;">Links</a>
+        </nav>
+    </header>
+
+    <main class="container fade-in">
+        <section style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center;">
+            <div>
+                <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;">Gaming, creatividad y comunidad</h1>
+                <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 32px;">
+                    TRUJO VIDS es un espacio enfocado en Minecraft, streaming en vivo y experiencias interactivas. Conectamos tecnología y entretenimiento.
+                </p>
+                <div style="display: flex; gap: 16px;">
+                    <a href="/links" style="background: var(--brand); color: #052e16; padding: 14px 28px; border-radius: 12px; font-weight: 800; text-decoration: none;">Explorar Links</a>
+                    <a href="/about" style="border: 1px solid var(--border); color: var(--text); padding: 14px 28px; border-radius: 12px; font-weight: 800; text-decoration: none;">Conocer más</a>
+                </div>
+            </div>
+            <img src="/og.png" alt="Preview" style="width: 100%; border-radius: 24px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.4);" />
+        </section>
+
+        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
+            <div style="background: var(--surface); padding: 32px; border-radius: 20px; border: 1px solid var(--border);">
+                <h3 style="font-size: 1.5rem; margin-bottom: 12px;">🟩 Minecraft</h3>
+                <p style="color: var(--text-muted);">Survival, retos y servidores. Eventos especiales diseñados para la comunidad de Los Trujos.</p>
+            </div>
+            <div style="background: var(--surface); padding: 32px; border-radius: 20px; border: 1px solid var(--border);">
+                <h3 style="font-size: 1.5rem; margin-bottom: 12px;">🔴 Streams</h3>
+                <p style="color: var(--text-muted);">Directos en Twitch con interacción total. Un espacio auténtico para pasar el rato.</p>
+            </div>
+            <div style="background: var(--surface); padding: 32px; border-radius: 20px; border: 1px solid var(--border);">
+                <h3 style="font-size: 1.5rem; margin-bottom: 12px;">🎮 Variedad</h3>
+                <p style="color: var(--text-muted);">Desde experimentos tecnológicos hasta los últimos lanzamientos del mundo gaming.</p>
+            </div>
+        </section>
+    </main>
+</BaseLayout>
