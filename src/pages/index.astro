@@ -1,43 +1,184 @@
 ---
-import BaseLayout from '../layouts/BaseLayout.astro';
+const title = "TRUJO VIDS | Gaming & Comunidad";
+const description = "El epicentro de la comunidad Trujo. Minecraft, streaming y tecnología.";
 ---
-<BaseLayout title="Inicio" description="Gaming, Minecraft y comunidad. Parte de TRUJO TECHNOLOGIES.">
-    <header style="padding: 32px 0; display: flex; justify-content: space-between; align-items: center;" class="container">
-        <strong style="font-size: 1.2rem; letter-spacing: -0.5px;">TRUJO VIDS</strong>
-        <nav>
-            <a href="/about" style="margin-left: 20px; color: var(--text-muted); text-decoration: none; font-weight: 600;">Sobre</a>
-            <a href="/links" style="margin-left: 20px; color: var(--text-muted); text-decoration: none; font-weight: 600;">Links</a>
-        </nav>
-    </header>
 
-    <main class="container fade-in">
-        <section style="display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center;">
-            <div>
-                <h1 style="font-size: 3.5rem; line-height: 1.1; margin-bottom: 20px; font-weight: 800;">El epicentro de la comunidad Trujo</h1>
-                <p style="font-size: 1.2rem; color: var(--text-muted); margin-bottom: 32px;">
-                    TRUJO VIDS es un espacio enfocado en Minecraft, streaming en vivo y experiencias interactivas. Conectamos tecnología y entretenimiento.
-                </p>
-                <div style="display: flex; gap: 16px;">
-                    <a href="/links" style="background: var(--brand); color: #3b82f6; padding: 14px 28px; border-radius: 12px; font-weight: 800; text-decoration: none;">Explorar Links</a>
-                    <a href="/about" style="border: 1px solid var(--border); color: var(--text); padding: 14px 28px; border-radius: 12px; font-weight: 800; text-decoration: none;">Conocer más</a>
-                </div>
-            </div>
-            <img src="/og.png" alt="Preview" style="width: 100%; border-radius: 24px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.4);" />
-        </section>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>{title}</title>
+		<meta name="description" content={description} />
+		
+		<!-- Open Graph / Social Media -->
+		<meta property="og:type" content="website" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:image" content="/og-image.png" />
+		
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
-        <section style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px;">
-            <div style="background: var(--surface); padding: 32px; border-radius: 20px; border: 1px solid var(--border);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 12px;">🟩 Minecraft</h3>
-                <p style="color: var(--text-muted);">Survival, retos y servidores. Eventos especiales diseñados para la comunidad de Los Trujos.</p>
-            </div>
-            <div style="background: var(--surface); padding: 32px; border-radius: 20px; border: 1px solid var(--border);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 12px;">🔴 Streams</h3>
-                <p style="color: var(--text-muted);">Directos en Twitch con interacción total. Un espacio auténtico para pasar el rato.</p>
-            </div>
-            <div style="background: var(--surface); padding: 32px; border-radius: 20px; border: 1px solid var(--border);">
-                <h3 style="font-size: 1.5rem; margin-bottom: 12px;">🎮 Variedad</h3>
-                <p style="color: var(--text-muted);">Desde experimentos tecnológicos hasta los últimos lanzamientos del mundo gaming.</p>
-            </div>
-        </section>
-    </main>
-</BaseLayout>
+		<style>
+			:root {
+				--brand: #3b82f6;
+				--brand-glow: rgba(59, 130, 246, 0.5);
+				--bg: #020617;
+				--surface: rgba(15, 23, 42, 0.6);
+				--border: rgba(255, 255, 255, 0.1);
+				--text: #f8fafc;
+				--text-muted: #94a3b8;
+			}
+
+			body {
+				background-color: var(--bg);
+				background-image: 
+					radial-gradient(circle at 0% 0%, rgba(59, 130, 246, 0.15) 0%, transparent 25%),
+					radial-gradient(circle at 100% 100%, rgba(16, 185, 129, 0.1) 0%, transparent 25%);
+				color: var(--text);
+				font-family: 'Plus Jakarta Sans', sans-serif;
+				margin: 0;
+				line-height: 1.6;
+				min-height: 100vh;
+			}
+
+			.glass {
+				background: var(--surface);
+				backdrop-filter: blur(12px);
+				-webkit-backdrop-filter: blur(12px);
+				border: 1px solid var(--border);
+				border-radius: 24px;
+			}
+
+			.container {
+				max-width: 1000px;
+				margin: 0 auto;
+				padding: 0 24px;
+			}
+
+			header {
+				padding: 40px 0;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
+
+			.logo {
+				font-size: 1.5rem;
+				font-weight: 800;
+				background: linear-gradient(to right, #fff, #94a3b8);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.hero {
+				text-align: center;
+				padding: 80px 0;
+			}
+
+			h1 {
+				font-size: clamp(2.5rem, 8vw, 4.5rem);
+				font-weight: 800;
+				line-height: 1;
+				margin-bottom: 24px;
+				letter-spacing: -0.02em;
+			}
+
+			.gradient-text {
+				background: linear-gradient(to bottom right, #fff 30%, var(--brand));
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+			}
+
+			.btn {
+				display: inline-block;
+				padding: 16px 32px;
+				border-radius: 14px;
+				font-weight: 700;
+				text-decoration: none;
+				transition: all 0.3s ease;
+			}
+
+			.btn-primary {
+				background: var(--brand);
+				color: white;
+				box-shadow: 0 0 20px var(--brand-glow);
+			}
+
+			.btn-primary:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 0 30px var(--brand-glow);
+			}
+
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 24px;
+				margin-top: 60px;
+			}
+
+			.card {
+				padding: 32px;
+				transition: transform 0.3s ease;
+			}
+
+			.card:hover {
+				transform: translateY(-5px);
+				border-color: var(--brand);
+			}
+
+			footer {
+				text-align: center;
+				padding: 80px 0 40px;
+				color: var(--text-muted);
+				font-size: 0.9rem;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<header>
+				<div class="logo">TRUJO VIDS</div>
+				<nav>
+					<a href="#links" style="color: var(--text); text-decoration: none; font-weight: 600;">Comunidad</a>
+				</nav>
+			</header>
+
+			<main>
+				<section class="hero">
+					<h1>El epicentro de la <br/><span class="gradient-text">Comunidad Trujo</span></h1>
+					<p style="font-size: 1.25rem; color: var(--text-muted); max-width: 600px; margin: 0 auto 40px;">
+						Minecraft, streaming y experiencias interactivas. Un espacio diseñado para jugar, aprender y construir juntos.
+					</p>
+					<div style="display: flex; gap: 16px; justify-content: center;">
+						<a href="https://discord.gg/lostrujos" class="btn btn-primary">Unirse a Los Trujos</a>
+						<a href="#links" class="btn glass" style="color: white;">Ver Redes</a>
+					</div>
+				</section>
+
+				<div class="grid" id="links">
+					<div class="card glass">
+						<h3 style="margin-top: 0;">🎮 Twitch</h3>
+						<p style="color: var(--text-muted);">Directos diarios. Minecraft, retos y charlas con la comunidad.</p>
+						<a href="#" style="color: var(--brand); text-decoration: none; font-weight: 700;">Seguir →</a>
+					</div>
+					<div class="card glass">
+						<h3 style="margin-top: 0;">💬 Discord</h3>
+						<p style="color: var(--text-muted);">El corazón de la comunidad. Eventos, anuncios y soporte.</p>
+						<a href="#" style="color: var(--brand); text-decoration: none; font-weight: 700;">Entrar →</a>
+					</div>
+					<div class="card glass">
+						<h3 style="margin-top: 0;">📸 Instagram</h3>
+						<p style="color: var(--text-muted);">Clips exclusivos, detrás de cámaras y actualizaciones rápidas.</p>
+						<a href="#" style="color: var(--brand); text-decoration: none; font-weight: 700;">Ver más →</a>
+					</div>
+				</div>
+			</main>
+
+			<footer>
+				<p>© 2026 TRUJO VIDS • Un proyecto de <a href="https://trujotechnologies.com" style="color: var(--brand); text-decoration: none;">TRUJO TECHNOLOGIES</a></p>
+			</footer>
+		</div>
+	</body>
+</html>
