@@ -13,11 +13,10 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          cache: 'npm'
 
       - name: Install & Build
         run: |
-          npm install
+          npm ci || npm install
           npm run build
 
       - name: Deploy to VPS via SSH
@@ -27,11 +26,11 @@ jobs:
           username: ${{ secrets.VPS_SSH_USER }}
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
           port: ${{ secrets.VPS_SSH_PORT }}
-          source: "dist/*"
+          source: "dist/"
           target: "/home/juan/releases/trujovids/${{ github.sha }}"
           strip_components: 1
 
-      - name: Atomic Switch & Cleanup
+      - name: Atomic switch + cleanup
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.VPS_SSH_HOST }}
@@ -39,11 +38,7 @@ jobs:
           key: ${{ secrets.VPS_SSH_PRIVATE_KEY }}
           port: ${{ secrets.VPS_SSH_PORT }}
           script: |
-            # Crear el enlace simbólico atómico
             ln -sfn /home/juan/releases/trujovids/${{ github.sha }} /home/juan/stack/trujovids/site
-            
-            # Recargar Nginx en el contenedor para asegurar que tome los cambios
-            sudo docker exec trujovids nginx -s reload
-            
-            # Limpieza: Mantener solo los últimos 5 releases para no llenar el disco
-            cd /home/juan/releases/trujovids && ls -t | tail -n +6 | xargs rm -rf --
+            docker exec trujovids nginx -s reload || true
+            cd /home/juan/releases/trujovids
+            ls -t | tail -n +6 | xargs -r rm -rf --
